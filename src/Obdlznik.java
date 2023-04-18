@@ -1,7 +1,5 @@
 import org.junit.jupiter.api.Test;
-
 import java.util.Scanner;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Obdlznik {
@@ -34,9 +32,11 @@ public class Obdlznik {
                 } else {
                     System.out.println("Neznáme písmeno");
                 }
-            } else {
+            } else if (startPorgram.equalsIgnoreCase("q")){
                 System.out.println("Koniec programu");
                 System.exit(0);
+            } else {
+                System.out.println("Neznáme písmeno");
             }
         } while (!startPorgram.equalsIgnoreCase("q"));
     }
