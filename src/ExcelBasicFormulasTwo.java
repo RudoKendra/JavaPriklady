@@ -9,9 +9,11 @@ public class ExcelBasicFormulasTwo {
         List<Integer> numbers = new ArrayList<>();
         System.out.print("Zadaj cisla: ");
         int i = 0;
-        while (scan.hasNextInt()) {
-            numbers.add(scan.nextInt());
-            i++;
+        String vstupneHodnoty = scan.nextLine();
+        String[] jednotliveHodnoty = vstupneHodnoty.split(",");
+        for (String hodnota : jednotliveHodnoty) {
+            System.out.println(Integer.parseInt(hodnota));
+            numbers.add(Integer.parseInt(hodnota));
         }
 
         System.out.println("Cisla: " + numbers);
@@ -20,17 +22,19 @@ public class ExcelBasicFormulasTwo {
         System.out.println(getAverage(numbers));
         System.out.println(getSum(numbers));
     }
-    public static double getAverage(List<Integer> numbers){
+
+    public static double getAverage(List<Integer> numbers) {
         int sum = 0;
-        for( int d: numbers){
+        for (int d : numbers) {
             sum = sum + d;
         }
         int average = sum / numbers.size();
         return average;
     }
-    public static double getSum(List<Integer> numbers){
+
+    public static double getSum(List<Integer> numbers) {
         int sum = 0;
-        for( int d: numbers ){
+        for (int d : numbers) {
             sum = sum + d;
         }
         return sum;
