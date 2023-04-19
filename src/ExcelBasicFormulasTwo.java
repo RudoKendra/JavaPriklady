@@ -1,43 +1,39 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class ExcelBasicFormulasTwo {
-
-    public void getSum() {
-        for (int value : values) {
-            System.out.println("Suma čisel je: " + values);
-        }
-    }
-
-    public void getAverage() {
-        System.out.println("Priemer čísel je: " + ((value1+value2) / 2));
-    }
-
-    public void getMax() {
-        System.out.println("Max číslo je: " + Math.max(value1,value2));
-    }
-
-    public void getMin() {
-        System.out.println("Min číslo je: " + Math.min(value1,value2));
-    }
-
-    public void getCount() {
-        System.out.println("Počet čísel je: " + (value1+value2));
-    }
-
-    int value1;
-    int value2;
-    static int[] values;
     public static void main(String[] args) {
-        ExcelBasicFormulasTwo excelBasicFormulastwo = new ExcelBasicFormulasTwo();
-        excelBasicFormulastwo.value1 = 6;
-        excelBasicFormulastwo.value2 = 5;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Zadaj ľubovoľný počet čísel");
-        values = new int[]{Integer.parseInt(scanner.nextLine())};
+        Scanner scan = new Scanner(System.in);
+        List<Integer> numbers = new ArrayList<>();
+        System.out.print("Zadaj cisla: ");
+        int i = 0;
+        while (scan.hasNextInt()) {
+            numbers.add(scan.nextInt());
+            i++;
+        }
 
-        excelBasicFormulastwo.getSum();
-
-
+        System.out.println("Cisla: " + numbers);
+        System.out.println("Najvacsie cislo: " + Collections.max(numbers));
+        System.out.println("Najmensie cisla: " + Collections.min(numbers));
+        System.out.println(getAverage(numbers));
+        System.out.println(getSum(numbers));
+    }
+    public static double getAverage(List<Integer> numbers){
+        int sum = 0;
+        for( int d: numbers){
+            sum = sum + d;
+        }
+        int average = sum / numbers.size();
+        return average;
+    }
+    public static double getSum(List<Integer> numbers){
+        int sum = 0;
+        for( int d: numbers ){
+            sum = sum + d;
+        }
+        return sum;
     }
 }
 

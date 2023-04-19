@@ -1,5 +1,19 @@
 public class ExcelBasicFormulas {
+    int value1;
+    int value2;
+    public static void main(String[] args) {
+        ExcelBasicFormulas excelBasicFormulas = new ExcelBasicFormulas();
+        excelBasicFormulas.value1 = 5;
+        excelBasicFormulas.value2 = 6;
 
+
+        excelBasicFormulas.getMax();
+        excelBasicFormulas.getSum();
+        excelBasicFormulas.getCount();
+        excelBasicFormulas.getAverage();
+        excelBasicFormulas.getMin();
+
+    }
     public void getSum() {
         System.out.println("Suma čisel je: " + (value1+value2));
     }
@@ -18,22 +32,5 @@ public class ExcelBasicFormulas {
 
     public void getCount() {
         System.out.println("Počet čísel je: " + (value1+value2));
-    }
-
-    int value1;
-    int value2;
-    public static void main(String[] args) {
-        ExcelBasicFormulas excelBasicFormulas = new ExcelBasicFormulas();
-        excelBasicFormulas.value1 = 5;
-        excelBasicFormulas.value2 = 6;
-
-
-        excelBasicFormulas.getMax();
-        excelBasicFormulas.getSum();
-        excelBasicFormulas.getCount();
-        excelBasicFormulas.getAverage();
-        excelBasicFormulas.getMin();
-
-
     }
 }
