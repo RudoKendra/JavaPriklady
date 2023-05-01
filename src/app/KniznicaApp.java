@@ -1,6 +1,7 @@
 package app;
 
 import app.model.Kniha;
+import app.service.KnihaService;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,53 +9,42 @@ import java.util.Scanner;
 public class KniznicaApp {
 
     public static void main(String[] args) {
-
+        KnihaService knihaService = new KnihaService();
         ArrayList<Kniha> kniznica = new ArrayList<>();
         String menu = "";
+        kniznica.add(new Kniha("ahoj", "Sandokan", 50));
+        kniznica.add(new Kniha("ahojf", "Superman", 105));
 
         while (!menu.equalsIgnoreCase("koniec")) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("-------------------------");
-            System.out.println("Menu s možnosťami:\n" +
-                    "1. Zadaj novú knihu\n" +
-                    "2. Zobraz všetky knihy\n" +
-                    "3. Zobraz konkrétnu knihu (podľa indexu)\n" +
-                    "4. Vymaž konkrétnu knihu (podľa indexu)\n" +
-                    "5. Zobraz počet všetkých kníh\n" +
-                    "9. Vymaž všetky knihy\n" +
-                    "Koniec = skončí zadávanie novej knihy");
-
+            knihaService.zobrazMenu();
             menu = scanner.nextLine();
 
             switch (menu) {
                 case "1": {
-                    novaKniha(kniznica, scanner);
+                    knihaService.zadajNovuKnihu(kniznica);
                     break;
                 }
                 case "2": {
-                    System.out.println("Vsetky knihy su: ");
-                    for (Kniha kniha : kniznica) {
-                        System.out.println(kniha.toString());
-                    }
+                    knihaService.zobrazVsetkyKnihy(kniznica);
                     break;
                 }
                 case "3": {
-                    System.out.println("Zadaj aku knihu chces zobrazit (index knihy napr. \"2\")");
-                    int indexKnihy = scanner.nextInt();
-                    System.out.println(kniznica.get(indexKnihy-1));
+                    knihaService.zobrazKnihupodlaIndex(kniznica);
                     break;
                 }
                 case "4": {
-                    System.out.println("Zadaj aku knihu chces vymazat (index knihy napr. \"2\"");
-                    int indexKnihyVymaz = scanner.nextInt();
-                    kniznica.remove(indexKnihyVymaz-1);
+                    knihaService.vymazKnihuPodlaIndex(kniznica);
                     break;
                 }
                 case "5": {
-//                    TODO DOROBIT
-//                    kniznica.size(kniznica);
+                    System.out.println("Su " + kniznica.size() + " knihy v zozname");
                     break;
 
+                }
+                case "6": {
+                    knihaService.vyhladajKnihuPodlaNazvu(kniznica);
+                    break;
                 }
                 case "9": {
                     kniznica.removeAll(kniznica);
@@ -63,17 +53,5 @@ public class KniznicaApp {
                 }
             }
         }
-    }
-
-    private static void novaKniha(ArrayList<Kniha> kniznica, Scanner scanner) {
-        System.out.println("Zadaj nazov knihy");
-        Kniha kniha = new Kniha();
-        kniha.setNazov(scanner.nextLine());
-        System.out.println("Zadaj autora");
-        kniha.setAutor(scanner.nextLine());
-        System.out.println("Zadaj rok vydania");
-        kniha.setRokVydania(scanner.nextInt());
-        kniznica.add(kniha);
-        System.out.println("Kniha ulozena");
     }
 }

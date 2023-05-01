@@ -29,6 +29,15 @@ public class Kniha {
         this.rokVydania = rokVydania;
     }
 
+    public Kniha() {
+    }
+
+    public Kniha(String nazov, String autor, int rokVydania) {
+        this.nazov = nazov;
+        this.autor = autor;
+        this.rokVydania = rokVydania;
+    }
+
     @Override
     public String toString() {
         return "Kniha{" +
